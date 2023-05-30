@@ -12,7 +12,7 @@ pipeline {
         stage('Copy Zip and Unzip') {
             steps {
                 sh 'cp /home/ubuntu/html-zip/code*.zip /var/www/html/'
-                sh 'unzip /var/www/html/*.zip -d /var/www/html/'
+                sh 'cd /var/www/html && unzip -o "*.zip"'
             }
         }
 

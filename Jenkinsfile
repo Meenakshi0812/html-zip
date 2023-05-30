@@ -8,17 +8,17 @@ pipeline {
                 sh "cd /home/ubuntu/html-zip && zip -r code_`date +%Y%m%d%H%M%S`.zip ./*"
             }
         }
-        
+
         stage('Copy Zip and Unzip') {
             steps {
                 sh 'cp /home/ubuntu/html-zip/code*.zip /var/www/html/'
-                sh 'unzip /var/www/html/code*.zip -d /var/www/html/'
+                sh 'unzip /var/www/html/*.zip -d /var/www/html/'
             }
         }
-        
+
         stage('Create Soft Link') {
             steps {
-                sh 'ln -s /var/www/html/code*.zip /var/www/html/application'
+                sh 'ln -s /var/www/html/*.zip /var/www/html/application'
             }
         }
     }
